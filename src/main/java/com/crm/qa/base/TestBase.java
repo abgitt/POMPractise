@@ -11,8 +11,8 @@ import com.crm.qa.util.TestUtil;
 
 public class TestBase 
 {
-	static WebDriver dr;
-	static Properties prop;
+	public static WebDriver dr;
+	public static Properties prop;
 	
 	public TestBase()
 	{
@@ -45,6 +45,8 @@ public class TestBase
 		dr.manage().window().maximize();
 		dr.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		dr.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIME_OUT, TimeUnit.SECONDS);
+		
+		dr.get(prop.getProperty("url"));
 	}
 	
 }
