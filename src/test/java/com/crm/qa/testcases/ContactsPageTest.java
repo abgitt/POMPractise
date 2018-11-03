@@ -3,6 +3,7 @@ package com.crm.qa.testcases;
 import org.junit.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.crm.qa.base.TestBase;
@@ -41,6 +42,21 @@ public class ContactsPageTest extends TestBase
 	public void selctContactTest()
 	{
 		cpg.selectContactsByName("Mamatha G");
+	}
+	
+	@DataProvider
+	public Object[][] getCRMtestData()
+	{
+		return TestUtil.getTestData("Contacts");
+	}
+	
+	
+	@Test(priority=4,dataProvider="getCRMtestData")
+	public void createNewContactTest(String title,String fname,String lname,String co)
+	{
+		hpg.clickNewContact();
+		//cpg.createNewContact("Dr.", "Abilash", "G", "IR");
+		cpg.createNewContact(title, fname, lname, co);
 	}
 	
 	@AfterMethod
